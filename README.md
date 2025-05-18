@@ -63,6 +63,13 @@ The project is configured to use SQLite by default:
 ```bash     
 touch database/database.sqlite
 ```
+
+
+2. Run migrations to create the database tables and seed it:
+
+    ```bash
+    php artisan migrate --seed
+    ```
 #### Queue Configuration
 
 The system uses queues for processing events and notifications:
@@ -129,14 +136,6 @@ The system uses Pusher for real-time updates:
     PUSHER_APP_KEY=your_app_key
     PUSHER_APP_SECRET=your_app_secret
     PUSHER_APP_CLUSTER=your_app_cluster
-    ```
-
-### Database Setup
-
-1. Run migrations to create the database tables and seed it:
-
-    ```bash
-    php artisan migrate --seed
     ```
 
 ### Starting the Application
