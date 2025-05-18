@@ -257,6 +257,6 @@ Shows weather-influenced pricing suggestions for different product categories:
 
 #### AI and Weather-Based Recommendations
 
-Displays AI-generated product recommendations and weather-based suggestions:
+Displays AI-generated product recommendations and weather-based recommendations:
 
 ![Recommendations Page](repo_Images/recommendations.png)
