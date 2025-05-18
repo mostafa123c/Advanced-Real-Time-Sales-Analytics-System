@@ -41,9 +41,7 @@ class AIRecommendationService
                 ]);
                 if ($response->failed()) {
                     // Log::error($response->json());
-                    return response()->json([
-                        'message' => 'An error occurred while processing your request. Please try again later!'
-                    ], 400);
+                    throw new Exception('an error occurred while fetching weather data');
                 }
 
                 $recommendations = $response->json('choices')[0]['message']['content'];

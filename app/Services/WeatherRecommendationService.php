@@ -22,9 +22,7 @@ class WeatherRecommendationService
 
                 if ($response->failed()) {
                     // Log::error($response->json());
-                    return response()->json([
-                        'message' => 'An error occurred while processing your request. Please try again later.'
-                    ], 400);
+                    throw new Exception('an error occurred while fetching weather data');
                 }
 
                 $weather = $response->json();
@@ -36,6 +34,7 @@ class WeatherRecommendationService
                 ];
             } catch (Exception $e) {
                 // Log::error($e->getMessage());
+                Cache::forget("weather_{$city}");
                 return response()->json([
                     'message' => 'An error occurred while processing your request. Please try again later.'
                 ], 400);
