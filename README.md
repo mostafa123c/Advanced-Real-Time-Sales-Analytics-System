@@ -68,20 +68,9 @@ A Laravel-based application that provides real-time analytics for sales data. Th
 
 #### Database Configuration
 
-The project is configured to use SQLite by default. If you prefer MySQL or another database:
+The project is configured to use SQLite by default:
 
-1. Update the `.env` file with your database credentials:
-
-    ```
-    DB_CONNECTION=mysql
-    DB_HOST=127.0.0.1
-    DB_PORT=3306
-    DB_DATABASE=your_database_name
-    DB_USERNAME=your_username
-    DB_PASSWORD=your_password
-    ```
-
-2. For SQLite (default), ensure the database file exists:
+ 1.For SQLite (default), ensure the database file exists:
 
     ```bash
     touch database/database.sqlite
