@@ -74,7 +74,7 @@ php artisan migrate --seed
 ```
 #### Queue Configuration
 
-The system uses queues for processing events and notifications:
+The system uses queues for processing events that made after making an order:
 
 1. By default, the queue is set to use the database:
 
@@ -91,7 +91,7 @@ The system uses queues for processing events and notifications:
     REDIS_PORT=6379
     ```
 
-3. Start the queue worker in a separate terminal:
+3. You should Start the queue worker in a separate terminal:
 
     ```bash
     php artisan queue:work
