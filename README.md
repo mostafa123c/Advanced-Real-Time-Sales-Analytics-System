@@ -150,15 +150,6 @@ The system uses Pusher for real-time updates:
     ```bash
     php artisan migrate:fresh --seed
     ```
-
-### Storage Configuration
-
-1. Create a symbolic link from `public/storage` to `storage/app/public`:
-
-    ```bash
-    php artisan storage:link
-    ```
-
 ### Starting the Application
 
 1. Start the development server:
