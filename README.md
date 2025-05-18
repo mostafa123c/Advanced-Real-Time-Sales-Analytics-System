@@ -70,10 +70,8 @@ A Laravel-based application that provides real-time analytics for sales data. Th
 
 The project is configured to use SQLite by default:
 
- 1.For SQLite (default), ensure the database file exists:
-    ```bash
-    touch database/database.sqlite
-    ```
+1.For SQLite (default), ensure the database file exists:
+`bash     touch database/database.sqlite     `
 
 #### Queue Configuration
 
@@ -148,8 +146,9 @@ The system uses Pusher for real-time updates:
 1. Run migrations to create the database tables and seed it:
 
     ```bash
-    php artisan migrate:fresh --seed
+    php artisan migrate --seed
     ```
+
 ### Starting the Application
 
 1. Start the development server:
