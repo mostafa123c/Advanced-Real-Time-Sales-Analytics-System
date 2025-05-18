@@ -12,8 +12,9 @@ class WeatherRecommendationService
 
     public function getcurrentWeather($city = 'Cairo')
     {
-        return Cache::remember("weather_{$city}", 600, function () use ($city) {
-            try {
+        try {
+            return Cache::remember("weather_{$city}", 600, function () use ($city) {
+
                 $response = Http::get('https://api.openweathermap.org/data/2.5/weather', [
                     'q' => $city,
                     'units' => 'metric',
@@ -21,7 +22,6 @@ class WeatherRecommendationService
                 ]);
 
                 if ($response->failed()) {
-                    // Log::error($response->json());
                     throw new Exception('an error occurred while fetching weather data');
                 }
 
@@ -32,14 +32,13 @@ class WeatherRecommendationService
                     'humidity' => $weather['main']['humidity'],
                     'description' => $weather['weather'][0]['main']
                 ];
-            } catch (Exception $e) {
-                // Log::error($e->getMessage());
-                Cache::forget("weather_{$city}");
-                return response()->json([
-                    'message' => 'An error occurred while processing your request. Please try again later.'
-                ], 400);
-            }
-        });
+            });
+        } catch (Exception $e) {
+            // Log::error($e->getMessage());
+            return response()->json([
+                'message' => 'An error occurred while processing your request. Please try again later.'
+            ], 400);
+        }
     }
 
     public function getWeatherRecommendation($city = 'Cairo')

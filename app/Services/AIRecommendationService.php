@@ -27,8 +27,9 @@ class AIRecommendationService
         $userPrompt = $this->promptGenerator->generateUserPrompt($totalRevenue, $topProducts);
         $systemPrompt = $this->promptGenerator->generateSystemMessage();
 
-        return Cache::remember('openai_recommendation', 600, function () use ($userPrompt, $systemPrompt) {
-            try {
+        try {
+            return Cache::remember('openai_recommendation', 600, function () use ($userPrompt, $systemPrompt) {
+
                 $response = Http::withHeaders([
                     'Authorization' => 'Bearer ' . env('OPENAI_GITHUB_TOKEN'),
                     'Content-Type' => 'application/json',
@@ -47,13 +48,12 @@ class AIRecommendationService
                 $recommendations = $response->json('choices')[0]['message']['content'];
 
                 return $recommendations;
-            } catch (Exception $e) {
-                // Log::error($e->getMessage());
-                Cache::forget('openai_recommendation');
-                return response()->json([
-                    'message' => 'An error occurred while processing your request. Please try again later.'
-                ], 400);
-            }
-        });
+            });
+        } catch (Exception $e) {
+            // Log::error($e->getMessage());
+            return response()->json([
+                'message' => 'An error occurred while processing your request. Please try again later.'
+            ], 400);
+        }
     }
 }
