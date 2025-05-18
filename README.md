@@ -13,7 +13,7 @@ A Laravel-based application that provides real-time analytics for sales data. Th
 -   **Order Processing and Analytics System**: Complete order management and It's Analytics.
 -   **Event Broadcasting**: Custom events for real-time updates using Laravel's event broadcasting system.
 -   **API Endpoints**: RESTful API for orders, analytics, and recommendations.
--   **Database Structure**: Optimized schema for tracking products, orders.
+-   **Database Structure**: Optimized schema for tracking products, orders ana All queries made by Query Builder.
 
 ## Prerequisites
 
@@ -68,21 +68,9 @@ A Laravel-based application that provides real-time analytics for sales data. Th
 
 #### Database Configuration
 
-The project is configured to use SQLite by default. If you prefer MySQL or another database:
+The project is configured to use SQLite by default:
 
-1. Update the `.env` file with your database credentials:
-
-    ```
-    DB_CONNECTION=mysql
-    DB_HOST=127.0.0.1
-    DB_PORT=3306
-    DB_DATABASE=your_database_name
-    DB_USERNAME=your_username
-    DB_PASSWORD=your_password
-    ```
-
-2. For SQLite (default), ensure the database file exists:
-
+ 1.For SQLite (default), ensure the database file exists:
     ```bash
     touch database/database.sqlite
     ```
