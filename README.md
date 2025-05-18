@@ -17,7 +17,7 @@ A Laravel-based application that provides real-time analytics for sales data. Th
 -   **AI API Integration**: Integrate With Open AI to give recommendations based on sales analytics.
 -   **Weather API Integration**: Integrate With Weather API to give sales recommendations based weather.
 -   **Global Error Handling** : global error handling for all the endpoints.
-  
+
 ## Prerequisites
 
 -   PHP 8.2 or higher
@@ -63,7 +63,7 @@ The project is configured to use SQLite by default:
 
 1. For SQLite (default), ensure the database file exists:
 
-```bash     
+```bash
 touch database/database.sqlite
 ```
 
@@ -82,6 +82,7 @@ Replace the following API keys in your `.env` file with your own:
     ```
     OPENAI_GITHUB_TOKEN=your_github_token_openai_api_key
     ```
+
     Used Github Token For Models that manage me to Test Some Open-AI Models on url : https://models.github.ai/inference/chat/completions
 
 2. OpenWeatherMap API Key:
@@ -102,6 +103,7 @@ The system uses Pusher for real-time updates:
     PUSHER_APP_SECRET=your_app_secret
     PUSHER_APP_CLUSTER=your_app_cluster
     ```
+
 #### Queue Configuration
 
 The system uses queues for processing events that made after making an order:
@@ -140,6 +142,7 @@ The system uses queues for processing events that made after making an order:
     ```
     CACHE_STORE=redis
     ```
+
 ### Starting the Application
 
 1. Start the development server:
@@ -221,3 +224,39 @@ The application includes four main dashboard pages that can be accessed at `http
     - Test The real-time functionality
 
 All dashboards feature real-time updates through Pusher broadcasting, ensuring you receive instant notifications for new orders and analytics changes.
+
+## Testing Real-Time Functionality
+
+To test the real-time functionality of the system, follow these steps:
+
+1. Open two browser tabs
+2. In the first tab, navigate to `/dashboard/analytics` to view the Analytics Dashboard
+3. In the second tab, navigate to `/dashboard/add-order` to access the Add New Order page
+4. Create a new order in the Add Order tab
+5. Watch the Analytics Dashboard update in real-time with the new data
+
+### Dashboard Screenshots
+
+#### Analytics Dashboard
+
+Shows real-time sales metrics and analytics that update instantly when new orders are placed:
+
+![Analytics Dashboard](repo_Images/analytics.png)
+
+#### Add Order Page
+
+Interface for creating new orders to test real-time functionality:
+
+![Add Order Page](repo_Images/add-order.png)
+
+#### Dynamic Pricing Dashboard
+
+Shows weather-influenced pricing suggestions for different product categories:
+
+![Dynamic Pricing](repo_Images/dynamic-pricing.png)
+
+#### AI and Weather-Based Recommendations
+
+Displays AI-generated product recommendations and weather-based suggestions:
+
+![Recommendations Page](repo_Images/recommendations.png)
