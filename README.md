@@ -40,25 +40,13 @@ A Laravel-based application that provides real-time analytics for sales data. Th
     composer install
     ```
 
-3. Install JavaScript dependencies:
-
-    ```bash
-    npm install
-    ```
-
-4. Build frontend assets:
-
-    ```bash
-    npm run build
-    ```
-
-5. Copy the environment file:
+3. Copy the environment file:
 
     ```bash
     cp .env.example .env
     ```
 
-6. Generate application key:
+4. Generate application key:
 
     ```bash
     php artisan key:generate
