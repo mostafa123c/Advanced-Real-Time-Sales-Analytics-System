@@ -13,7 +13,7 @@ A Laravel-based application that provides real-time analytics for sales data. Th
 -   **Order Processing and Analytics System**: Complete order management and It's Analytics.
 -   **Event Broadcasting**: Custom events for real-time updates using Laravel's event broadcasting system.
 -   **API Endpoints**: RESTful API for orders, analytics, and recommendations.
--   **Database Structure**: Optimized schema for tracking products, orders.
+-   **Database Structure**: Optimized schema for tracking products, orders ana All queries made by Query Builder.
 
 ## Prerequisites
 
