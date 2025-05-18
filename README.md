@@ -16,6 +16,7 @@ A Laravel-based application that provides real-time analytics for sales data. Th
 -   **Database Structure**: Optimized schema for tracking products, orders ana All queries made by Query Builder.
 -   **AI API Integration**: Integrate With Open AI to give recommendations based on sales analytics.
 -   **Weather API Integration**: Integrate With Weather API to give sales recommendations based weather.
+-   **Global Error Handling** : global error handling for all the endpoints.
   
 ## Prerequisites
 
