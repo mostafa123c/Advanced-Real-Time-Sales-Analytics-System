@@ -14,7 +14,9 @@ A Laravel-based application that provides real-time analytics for sales data. Th
 -   **Event Broadcasting**: Custom events for real-time updates using Laravel's event broadcasting system.
 -   **API Endpoints**: RESTful API for orders, analytics, and recommendations.
 -   **Database Structure**: Optimized schema for tracking products, orders ana All queries made by Query Builder.
-
+-   **AI API Integration**: Integrate With Open AI to give recommendations based on sales analytics.
+-   **Weather API Integration**: Integrate With Weather API to give sales recommendations based weather.
+  
 ## Prerequisites
 
 -   PHP 8.2 or higher
