@@ -64,12 +64,11 @@ The project is configured to use SQLite by default:
 touch database/database.sqlite
 ```
 
-
 2. Run migrations to create the database tables and seed it:
 
-    ```bash
-    php artisan migrate --seed
-    ```
+```bash
+php artisan migrate --seed
+```
 #### Queue Configuration
 
 The system uses queues for processing events and notifications:
