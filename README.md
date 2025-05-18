@@ -120,6 +120,7 @@ Replace the following API keys in your `.env` file with your own:
     ```
     OPENAI_GITHUB_TOKEN=your_github_token_openai_api_key
     ```
+    Used Github Token For Models that manage me to Test Some Open-AI Models on url : https://models.github.ai/inference/chat/completions
 
 2. OpenWeatherMap API Key:
 
