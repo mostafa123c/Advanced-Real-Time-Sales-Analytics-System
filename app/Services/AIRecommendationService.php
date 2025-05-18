@@ -27,8 +27,6 @@ class AIRecommendationService
         $userPrompt = $this->promptGenerator->generateUserPrompt($totalRevenue, $topProducts);
         $systemPrompt = $this->promptGenerator->generateSystemMessage();
 
-        Log::info($userPrompt);
-
         return Cache::remember('openai_recommendation', 600, function () use ($userPrompt, $systemPrompt) {
             try {
                 $response = Http::withHeaders([
