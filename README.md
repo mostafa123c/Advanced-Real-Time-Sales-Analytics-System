@@ -59,8 +59,10 @@ A Laravel-based application that provides real-time analytics for sales data. Th
 The project is configured to use SQLite by default:
 
 1.For SQLite (default), ensure the database file exists:
-`bash     touch database/database.sqlite     `
 
+```bash     
+touch database/database.sqlite
+```
 #### Queue Configuration
 
 The system uses queues for processing events and notifications:
