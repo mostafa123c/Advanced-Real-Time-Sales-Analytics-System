@@ -27,33 +27,26 @@ class AIRecommendationService
         $userPrompt = $this->promptGenerator->generateUserPrompt($totalRevenue, $topProducts);
         $systemPrompt = $this->promptGenerator->generateSystemMessage();
 
-        try {
-            return Cache::remember('openai_recommendation', 600, function () use ($userPrompt, $systemPrompt) {
+        return Cache::remember('openai_recommendation', 600, function () use ($userPrompt, $systemPrompt) {
 
-                $response = Http::withHeaders([
-                    'Authorization' => 'Bearer ' . env('OPENAI_GITHUB_TOKEN'),
-                    'Content-Type' => 'application/json',
-                ])->post('https://models.github.ai/inference/chat/completions', [
-                    'model' => 'openai/gpt-4.1-mini',
-                    'messages' => [
-                        ['role' => 'system', 'content' => $systemPrompt],
-                        ['role' => 'user', 'content' => $userPrompt],
-                    ]
-                ]);
-                if ($response->failed()) {
-                    // Log::error($response->json());
-                    throw new Exception('an error occurred while fetching weather data');
-                }
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . env('OPENAI_GITHUB_TOKEN'),
+                'Content-Type' => 'application/json',
+            ])->post('https://models.github.ai/inference/chat/completions', [
+                'model' => 'openai/gpt-4.1-mini',
+                'messages' => [
+                    ['role' => 'system', 'content' => $systemPrompt],
+                    ['role' => 'user', 'content' => $userPrompt],
+                ]
+            ]);
+            if ($response->failed()) {
+                Log::error($response->json());
+                throw new Exception('An error occurred while processing your request. Please try again later.');
+            }
 
-                $recommendations = $response->json('choices')[0]['message']['content'];
+            $recommendations = $response->json('choices')[0]['message']['content'];
 
-                return $recommendations;
-            });
-        } catch (Exception $e) {
-            // Log::error($e->getMessage());
-            return response()->json([
-                'message' => 'An error occurred while processing your request. Please try again later.'
-            ], 400);
-        }
+            return $recommendations;
+        });
     }
 }

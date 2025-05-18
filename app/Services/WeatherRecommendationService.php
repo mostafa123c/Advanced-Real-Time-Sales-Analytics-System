@@ -12,44 +12,39 @@ class WeatherRecommendationService
 
     public function getcurrentWeather($city = 'Cairo')
     {
-        try {
-            return Cache::remember("weather_{$city}", 600, function () use ($city) {
 
-                $response = Http::get('https://api.openweathermap.org/data/2.5/weather', [
-                    'q' => $city,
-                    'units' => 'metric',
-                    'appid' => env('OPENWEATHER_API_KEY')
-                ]);
+        return Cache::remember("weather_{$city}", 600, function () use ($city) {
 
-                if ($response->failed()) {
-                    throw new Exception('an error occurred while fetching weather data');
-                }
+            $response = Http::get('https://api.openweathermap.org/data/2.5/weather', [
+                'q' => $city,
+                'units' => 'metric',
+                'appid' => env('OPENWEATHER_API_KEY')
+            ]);
 
-                $weather = $response->json();
+            if ($response->failed()) {
+                throw new Exception('An error occurred while processing your request. Please try again later.');
+            }
 
-                return [
-                    'temperature' => $weather['main']['temp'],
-                    'humidity' => $weather['main']['humidity'],
-                    'description' => $weather['weather'][0]['main']
-                ];
-            });
-        } catch (Exception $e) {
-            // Log::error($e->getMessage());
-            return response()->json([
-                'message' => 'An error occurred while processing your request. Please try again later.'
-            ], 400);
-        }
+            $weather = $response->json();
+
+            return [
+                'temperature' => $weather['main']['temp'],
+                'humidity' => $weather['main']['humidity'],
+                'description' => $weather['weather'][0]['main']
+            ];
+        });
     }
 
     public function getWeatherRecommendation($city = 'Cairo')
     {
         $weather = $this->getcurrentWeather($city);
 
+        $recommendations = [];
+
         $temp = $weather['temperature'];
         $humidity = $weather['humidity'];
         $weather_description = strtolower($weather['description']);
 
-        $recommendations = [];
 
 
         // Temperature
@@ -116,6 +111,7 @@ class WeatherRecommendationService
     public function suggestDynamicPricing($city = 'Cairo')
     {
         $weather = $this->getcurrentWeather($city);
+
 
         $temp = $weather['temperature'];
         $humidity = $weather['humidity'];
