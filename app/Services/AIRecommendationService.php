@@ -29,6 +29,7 @@ class AIRecommendationService
 
         return Cache::remember('openai_recommendation', 600, function () use ($userPrompt, $systemPrompt) {
 
+            // open_ai_url https://api.openai.com/v1/chat/completions
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . env('OPENAI_GITHUB_TOKEN'),
                 'Content-Type' => 'application/json',
