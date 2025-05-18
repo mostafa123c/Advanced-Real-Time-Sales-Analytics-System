@@ -72,6 +72,36 @@ touch database/database.sqlite
 ```bash
 php artisan migrate --seed
 ```
+
+#### API Keys Configuration
+
+Replace the following API keys in your `.env` file with your own:
+
+1. OpenAI Github Token API Key:
+
+    ```
+    OPENAI_GITHUB_TOKEN=your_github_token_openai_api_key
+    ```
+    Used Github Token For Models that manage me to Test Some Open-AI Models on url : https://models.github.ai/inference/chat/completions
+
+2. OpenWeatherMap API Key:
+
+    ```
+    OPENWEATHER_API_KEY=your_openweather_api_key
+    ```
+
+#### Broadcasting Configuration
+
+The system uses Pusher for real-time updates:
+
+1. Update the Pusher credentials in your `.env` file:
+    ```
+    BROADCAST_CONNECTION=pusher
+    PUSHER_APP_ID=your_app_id
+    PUSHER_APP_KEY=your_app_key
+    PUSHER_APP_SECRET=your_app_secret
+    PUSHER_APP_CLUSTER=your_app_cluster
+    ```
 #### Queue Configuration
 
 The system uses queues for processing events that made after making an order:
@@ -110,37 +140,6 @@ The system uses queues for processing events that made after making an order:
     ```
     CACHE_STORE=redis
     ```
-
-#### API Keys Configuration
-
-Replace the following API keys in your `.env` file with your own:
-
-1. OpenAI Github Token API Key:
-
-    ```
-    OPENAI_GITHUB_TOKEN=your_github_token_openai_api_key
-    ```
-    Used Github Token For Models that manage me to Test Some Open-AI Models on url : https://models.github.ai/inference/chat/completions
-
-2. OpenWeatherMap API Key:
-
-    ```
-    OPENWEATHER_API_KEY=your_openweather_api_key
-    ```
-
-#### Broadcasting Configuration
-
-The system uses Pusher for real-time updates:
-
-1. Update the Pusher credentials in your `.env` file:
-    ```
-    BROADCAST_CONNECTION=pusher
-    PUSHER_APP_ID=your_app_id
-    PUSHER_APP_KEY=your_app_key
-    PUSHER_APP_SECRET=your_app_secret
-    PUSHER_APP_CLUSTER=your_app_cluster
-    ```
-
 ### Starting the Application
 
 1. Start the development server:
